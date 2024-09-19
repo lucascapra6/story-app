@@ -7,30 +7,18 @@
 
 import {ThemeProvider} from '@shopify/restyle';
 import React from 'react';
-import {SafeAreaView} from 'react-native';
-import {Button} from './src/components/Button';
 import {theme} from './src/theme/theme';
-import {Icon} from './src/components/Icon';
-import {TextInput} from './src/components/TextInput';
+import {SafeAreaProvider} from 'react-native-safe-area-context';
+import {SignUpScreen} from './src/screens/auth/SignUpScreen';
+import {LoginScreen} from './src/screens/auth/LoginScreen';
+
 function App(): JSX.Element {
   return (
-    <ThemeProvider theme={theme}>
-      <SafeAreaView>
-        <Button title="Primary" preset="primary" m="s8" disabled />
-        <Button title="Outline" preset="outline" m="s8" disabled />
-        <Icon name={'eyeOn'} size={50} />
-        <Icon name={'eyeOff'} />
-        <TextInput
-          label="Email"
-          renderRightComponent={<Icon name={'eyeOn'} />}
-        />
-        <TextInput
-          label="Senha"
-          errorMessage={'senha invalida'}
-          placeholder={'senha'}
-        />
-      </SafeAreaView>
-    </ThemeProvider>
+    <SafeAreaProvider>
+      <ThemeProvider theme={theme}>
+        <SignUpScreen />
+      </ThemeProvider>
+    </SafeAreaProvider>
   );
 }
 

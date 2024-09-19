@@ -24,10 +24,11 @@ export function Text({
   ...sRTextProps
 }: TextProps) {
   const fontFamily = getFontFamily(preset, bold, italic, semiBold);
+  const fontWeight = bold ? 'bold' : 'normal';
   return (
     <SRText
       color="backgroundContrast"
-      style={[$fontSizes[preset], {fontFamily}, style]}
+      style={[$fontSizes[preset], {fontWeight}, {fontFamily}, style]}
       {...sRTextProps}>
       {children}
     </SRText>
@@ -79,7 +80,7 @@ export const $fontSizes: Record<TextVariants, TextStyle> = {
   headingSmall: {fontSize: 18, lineHeight: 23.4},
 
   paragraphLarge: {fontSize: 18, lineHeight: 25.2},
-  paragraphMedium: {fontSize: 16, lineHeight: 22.4},
+  paragraphMedium: {fontSize: 16, lineHeight: 22.4, fontWeight: '500'},
   paragraphSmall: {fontSize: 14, lineHeight: 19.6},
 
   paragraphCaption: {fontSize: 12, lineHeight: 16.8},
