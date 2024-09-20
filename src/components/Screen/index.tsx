@@ -31,26 +31,22 @@ export function Screen({
     <KeyboardAvoidingView
       style={{flex: 1}}
       behavior={Platform.OS === 'ios' ? 'padding' : undefined}>
-      <SafeAreaView style={{flex: 1}}>
-        <Container backgroundColor={colors.background}>
-          <Box
-            paddingHorizontal="s24"
-            flex={1}
-            style={[{paddingTop: top, paddingBottom: bottom}, style]}
-            justifyContent={'flex-end'}
-            {...boxProps}>
-            {canGoBack && (
-              <Box mb="s24" flexDirection="row" alignItems="center">
-                <Icon name="arrowLeft" color="primary" />
-                <Text preset="paragraphMedium" semiBold ml="s8">
-                  Voltar
-                </Text>
-              </Box>
-            )}
-            {children}
-          </Box>
-        </Container>
-      </SafeAreaView>
+      <Container backgroundColor={colors.background} {...boxProps}>
+        <Box
+          paddingHorizontal="s24"
+          paddingBottom="s24"
+          style={[{paddingTop: top, paddingBottom: bottom}, style]}>
+          {canGoBack && (
+            <Box mb="s24" flexDirection="row" alignItems="center">
+              <Icon name="arrowLeft" color="primary" />
+              <Text preset="paragraphMedium" semiBold ml="s8">
+                Voltar
+              </Text>
+            </Box>
+          )}
+          {children}
+        </Box>
+      </Container>
     </KeyboardAvoidingView>
   );
 }
