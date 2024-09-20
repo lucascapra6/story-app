@@ -3,6 +3,7 @@ import {Screen} from '../../../components/Screen';
 import {Text} from '../../../components/Text';
 import {TextInput} from '../../../components/TextInput';
 import {Button} from '../../../components/Button';
+import {PasswordInput} from '../../../components/PasswordInput';
 export const LoginScreen = () => {
   return (
     <Screen flex={1} justifyContent="center" scrollable>
@@ -19,12 +20,12 @@ export const LoginScreen = () => {
         boxProps={{mb: 's20'}}
       />
 
-      <TextInput
+      <PasswordInput
         label="Senha"
         placeholder="Digite sua senha"
         boxProps={{mb: 's20'}}
       />
-
+      <Button preset="primary" marginTop="s12" title="Entrar" />
       <Button preset="outline" marginTop="s12" title="Criar uma conta" />
     </Screen>
   );
