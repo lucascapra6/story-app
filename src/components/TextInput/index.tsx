@@ -37,6 +37,7 @@ export function TextInput({
     flexGrow: 1,
     flexShrink: 1,
     padding: spacing.s16,
+    ...$fontSizes.paragraphMedium,
   };
   function focusInput() {
     inputRef.current?.focus();

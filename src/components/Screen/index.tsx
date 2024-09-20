@@ -40,7 +40,7 @@ export function Screen({
             justifyContent={'flex-end'}
             {...boxProps}>
             {canGoBack && (
-              <Box mb="s24" flexDirection="row">
+              <Box mb="s24" flexDirection="row" alignItems="center">
                 <Icon name="arrowLeft" color="primary" />
                 <Text preset="paragraphMedium" semiBold ml="s8">
                   Voltar

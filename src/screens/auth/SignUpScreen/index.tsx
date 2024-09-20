@@ -33,11 +33,7 @@ export function SignUpScreen() {
         boxProps={{mb: 's20'}}
         RightComponent={<Icon name="eyeOn" />}
       />
-      <TextInput
-        label="E-mail"
-        placeholder="Digite seu e-mail"
-        boxProps={{mb: 's20'}}
-      />
+
       <Button onPress={submitForm} title="Criar uma conta" />
     </Screen>
   );
