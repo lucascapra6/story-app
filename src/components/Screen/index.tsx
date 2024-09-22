@@ -2,11 +2,12 @@ import React from 'react';
 import {KeyboardAvoidingView, Platform, SafeAreaView} from 'react-native';
 import {Icon} from '../Icon';
 import {Text} from '../Text';
-import {Box, BoxProps} from '../Box';
+import {Box, BoxProps, PressableBox} from '../Box';
 import {useAppSafeArea} from '../../hooks/useAppSafeArea';
 
 import {ScrollViewContainer, ViewContainer} from '../ScreenContainer';
 import {useAppTheme} from '../../hooks/useAppTheme';
+import {useNavigation} from '@react-navigation/native';
 
 export interface ScreenProps extends BoxProps {
   children: React.ReactNode;
@@ -25,6 +26,7 @@ export function Screen({
 }: ScreenProps) {
   const {bottom, top} = useAppSafeArea();
   const {colors} = useAppTheme();
+  const navigation = useNavigation();
 
   const Container = scrollable ? ScrollViewContainer : ViewContainer;
   return (
@@ -37,12 +39,18 @@ export function Screen({
           paddingBottom="s24"
           style={[{paddingTop: top, paddingBottom: bottom}, style]}>
           {canGoBack && (
-            <Box mb="s24" flexDirection="row" alignItems="center">
+            <PressableBox
+              onPress={navigation.goBack}
+              mb="s24"
+              flexDirection="row"
+              hitSlop={10}
+              width={100}
+              alignItems="center">
               <Icon name="arrowLeft" color="primary" />
-              <Text preset="paragraphMedium" semiBold ml="s8">
+              <Text preset="paragraphMedium" semiBold ml="s8" bold>
                 Voltar
               </Text>
-            </Box>
+            </PressableBox>
           )}
           {children}
         </Box>

@@ -28,7 +28,9 @@ import {ProfileFillIcon} from '../../assets/icons/ProfileFillIcon';
 import {SearchIcon} from '../../assets/icons/SearchIcon';
 import {SettingsIcon} from '../../assets/icons/SettingsIcon';
 import {TrashIcon} from '../../assets/icons/TrashIcon';
+import {CheckRoundIcon} from '../../assets/icons/CheckRound';
 import {Pressable} from 'react-native';
+import {MessageRoundIcon} from '../../assets/icons/MessageRound';
 
 const IconsRegistry = {
   arrowLeft: ArrowLeftIcon,
@@ -58,6 +60,8 @@ const IconsRegistry = {
   search: SearchIcon,
   settings: SettingsIcon,
   trash: TrashIcon,
+  checkRound: CheckRoundIcon,
+  messageRound: MessageRoundIcon,
 };
 export type IconName = keyof typeof IconsRegistry;
 
