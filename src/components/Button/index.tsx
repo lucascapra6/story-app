@@ -1,11 +1,11 @@
 import React from 'react';
 import {
-  TouchableOpacityBox,
   TouchableOpacityBoxProps,
-} from '../TouchableOpacityBox';
-import {Text} from '../Text';
-import {ActivityIndicator} from '../ActivityIndicator';
-import {buttonPresets, Presets} from './buttonPresets';
+  TouchableOpacityBox,
+} from '@components/TouchableOpacityBox';
+import {Text} from '@components/Text';
+import {ActivityIndicator} from '@components/ActivityIndicator';
+import {buttonPresets, Presets} from '@components/Button/buttonPresets';
 
 type ButtonProps = {
   preset?: Presets;

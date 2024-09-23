@@ -1,5 +1,5 @@
-import {TouchableOpacityBoxProps} from '../TouchableOpacityBox';
-import {ThemeColors} from '../../theme/theme';
+import {TouchableOpacityBoxProps} from '@components/TouchableOpacityBox';
+import {ThemeColors} from '@theme/theme';
 
 export type Presets = 'primary' | 'outline';
 

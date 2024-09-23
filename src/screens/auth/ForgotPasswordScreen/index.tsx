@@ -1,14 +1,13 @@
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
 import React from 'react';
-import {Button} from '../../../components/Button';
-import {Screen} from '../../../components/Screen';
-import {Text} from '../../../components/Text';
-import {TextInput} from '../../../components/TextInput';
-import {RootStackParamList} from '../../../routes';
-import {useResetNavigationSuccessScreen} from '../../../hooks/useResetNavigationSuccessScreen';
+import {Button} from '@components/Button';
+import {Screen} from '@components/Screen';
+import {Text} from '@components/Text';
+import {RootStackParamList} from '@routes/index';
+import {useResetNavigationSuccessScreen} from '@hooks/useResetNavigationSuccessScreen';
 import {useForm} from 'react-hook-form';
 import {zodResolver} from '@hookform/resolvers/zod';
-import {loginSchema} from '../LoginScreen/loginSchema';
+
 import {
   ForgotPasswordSchema,
   forgotPasswordSchema,
