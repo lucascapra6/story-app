@@ -8,27 +8,30 @@ import {useResetNavigationSuccessScreen} from '../../../hooks/useResetNavigation
 import {FormTextInput} from '../../../components/Form/FormTextInput';
 import {useForm} from 'react-hook-form';
 import {FormPasswordInput} from '../../../components/Form/FormPasswordInput';
+import {SignUpSchema, signUpSchema} from './signUpSchema';
+import {zodResolver} from '@hookform/resolvers/zod';
 
 type ScreenProps = NativeStackScreenProps<RootStackParamList, 'SignUpScreen'>;
 
 type SignUpScreenFormTypes = {
   username: string;
-  name: string;
+  fullName: string;
   email: string;
   password: string;
 };
 export function SignUpScreen({}: ScreenProps) {
   const {reset} = useResetNavigationSuccessScreen();
   const {control, handleSubmit} = useForm<SignUpScreenFormTypes>({
+    resolver: zodResolver(signUpSchema),
     defaultValues: {
       username: '',
-      name: '',
+      fullName: '',
       email: '',
       password: '',
     },
     mode: 'onBlur',
   });
-  function submitForm() {
+  function submitForm(formValues: SignUpSchema) {
     reset({
       icon: {
         name: 'checkRound',
@@ -46,15 +49,13 @@ export function SignUpScreen({}: ScreenProps) {
       <FormTextInput
         name="username"
         control={control}
-        rules={{required: 'Campo obrigatório'}}
         label="Seu username"
         placeholder="@"
         boxProps={{mb: 's20'}}
       />
       <FormTextInput
-        name="name"
+        name="fullName"
         control={control}
-        rules={{required: 'Campo obrigatório'}}
         label="Nome Completo"
         placeholder="Digite seu nome completo"
         boxProps={{mb: 's20'}}
@@ -62,7 +63,6 @@ export function SignUpScreen({}: ScreenProps) {
       <FormTextInput
         name="email"
         control={control}
-        rules={{required: 'Campo obrigatório'}}
         label="E-mail"
         placeholder="Digite seu e-mail"
         boxProps={{mb: 's20'}}
@@ -70,7 +70,6 @@ export function SignUpScreen({}: ScreenProps) {
       <FormPasswordInput
         name="password"
         control={control}
-        rules={{required: 'Campo obrigatório'}}
         label="Senha"
         placeholder="Digite sua senha"
         boxProps={{mb: 's20'}}

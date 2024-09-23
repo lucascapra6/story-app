@@ -1,16 +1,16 @@
 import React from 'react';
 import {Screen} from '../../../components/Screen';
 import {Text} from '../../../components/Text';
-import {TextInput} from '../../../components/TextInput';
 import {Button} from '../../../components/Button';
-import {PasswordInput} from '../../../components/PasswordInput';
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
 import {RootStackParamList} from '../../../routes';
 import {PressableBox} from '../../../components/Box';
-import {Controller, useForm} from 'react-hook-form';
+import {useForm} from 'react-hook-form';
 import {Alert} from 'react-native';
 import {FormTextInput} from '../../../components/Form/FormTextInput';
 import {FormPasswordInput} from '../../../components/Form/FormPasswordInput';
+import {zodResolver} from '@hookform/resolvers/zod';
+import {LoginSchema, loginSchema} from './loginSchema';
 
 type ScreenProps = NativeStackScreenProps<RootStackParamList, 'LoginScreen'>;
 
@@ -19,14 +19,15 @@ type LoginFormType = {
   password: string;
 };
 export const LoginScreen = ({navigation}: ScreenProps) => {
-  function submitForm({email, password}: LoginFormType) {
+  function submitForm({email, password}: LoginSchema) {
     Alert.alert(`Email: ${email} ${`\n`} Senha: ${password}`);
   }
   const {
     control,
     handleSubmit,
     formState: {errors, isValid},
-  } = useForm({
+  } = useForm<LoginFormType>({
+    resolver: zodResolver(loginSchema),
     defaultValues: {
       email: '',
       password: '',
