@@ -20,7 +20,7 @@ type LoginFormType = {
 };
 export const LoginScreen = ({navigation}: ScreenProps) => {
   function submitForm({email, password}: LoginSchema) {
-    Alert.alert(`Email: ${email} ${`\n`} Senha: ${password}`);
+    Alert.alert(`Email: ${email} \n Senha: ${password}`);
   }
   const {
     control,
@@ -56,7 +56,7 @@ export const LoginScreen = ({navigation}: ScreenProps) => {
         rules={{
           required: 'E-mail obrigatório',
           pattern: {
-            value: /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/,
+            value: /^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/,
             message: 'E-mail inválido',
           },
         }}

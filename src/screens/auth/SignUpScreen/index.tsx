@@ -8,10 +8,7 @@ import {useResetNavigationSuccessScreen} from '@hooks/useResetNavigationSuccessS
 import {FormTextInput} from '@components/Form/FormTextInput';
 import {useForm} from 'react-hook-form';
 import {FormPasswordInput} from '@components/Form/FormPasswordInput';
-import {
-  SignUpSchema,
-  signUpSchema,
-} from '@screens/auth/SignUpScreen/signUpSchema';
+import {signUpSchema} from '@screens/auth/SignUpScreen/signUpSchema';
 import {zodResolver} from '@hookform/resolvers/zod';
 
 type ScreenProps = NativeStackScreenProps<RootStackParamList, 'SignUpScreen'>;
@@ -34,7 +31,7 @@ export function SignUpScreen({}: ScreenProps) {
     },
     mode: 'onBlur',
   });
-  function submitForm(formValues: SignUpSchema) {
+  function submitForm() {
     reset({
       icon: {
         name: 'checkRound',

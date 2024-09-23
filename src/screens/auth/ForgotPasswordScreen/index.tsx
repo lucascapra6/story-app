@@ -8,11 +8,8 @@ import {useResetNavigationSuccessScreen} from '@hooks/useResetNavigationSuccessS
 import {useForm} from 'react-hook-form';
 import {zodResolver} from '@hookform/resolvers/zod';
 
-import {
-  ForgotPasswordSchema,
-  forgotPasswordSchema,
-} from './forgotPasswordScreen';
-import {FormTextInput} from '../../../components/Form/FormTextInput';
+import {forgotPasswordSchema} from './forgotPasswordScreen';
+import {FormTextInput} from '@components/Form/FormTextInput';
 type ScreenProps = NativeStackScreenProps<
   RootStackParamList,
   'ForgotPasswordScreen'
@@ -24,7 +21,7 @@ export function ForgotPasswordScreen({}: ScreenProps) {
   const {
     control,
     handleSubmit,
-    formState: {errors, isValid},
+    formState: {isValid},
   } = useForm<ForgotPasswordForm>({
     resolver: zodResolver(forgotPasswordSchema),
     defaultValues: {
@@ -33,7 +30,7 @@ export function ForgotPasswordScreen({}: ScreenProps) {
     mode: 'onBlur',
   });
   const {reset} = useResetNavigationSuccessScreen();
-  function submitForm(formValues: ForgotPasswordSchema) {
+  function submitForm() {
     reset({
       title: `Enviamos as instruções para seu  ${'\n'}e-mail`,
       description:
