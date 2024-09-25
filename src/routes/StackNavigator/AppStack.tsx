@@ -3,7 +3,7 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {
   AppTabBottomTabParamList,
   AppTabNavigator,
-} from '@routes/AppTabNavigator';
+} from '@routes/TabNavigator/AppTabNavigator';
 import {SettingsScreen} from '@screens/app/SettingsScreen';
 import {NavigatorScreenParams} from '@react-navigation/native';
 
