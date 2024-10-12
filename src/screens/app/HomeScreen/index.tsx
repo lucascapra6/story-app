@@ -17,14 +17,8 @@ import {StickyHeaderWrapper} from '@components/StickyHeaderWrapper';
 import {useStickyHeaderWrapper} from '@components/StickyHeaderWrapper/useStickyHeaderWrapper';
 const headerHeight = Platform.OS === 'android' ? 70 : 110;
 export function HomeScreen() {
-  const {
-    postList,
-    error,
-    loading,
-    hasNextPage,
-    fetchInitialData,
-    fetchNextPage,
-  } = usePostList();
+  const {data, error, loading, hasNextPage, fetchInitialData, fetchNextPage} =
+    usePostList();
 
   useEffect(() => {
     fetchInitialData();
@@ -44,7 +38,7 @@ export function HomeScreen() {
       </StickyHeaderWrapper>
       <Animated.FlatList
         bounces={false}
-        data={postList}
+        data={data}
         keyExtractor={item => item.id}
         scrollEventThrottle={16}
         onEndReached={fetchNextPage}
