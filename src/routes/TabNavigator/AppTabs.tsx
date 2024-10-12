@@ -9,7 +9,6 @@ import {AppTabBottomTabParamList} from '@routes/TabNavigator/AppTabNavigator';
 
 import {mapAppTab} from '@routes/TabNavigator/mapAppTab';
 import {$shadow} from '@theme/theme';
-import {useAppSafeArea} from '@hooks/useAppSafeArea';
 
 export function AppTabs({state, descriptors, navigation}: BottomTabBarProps) {
   return (

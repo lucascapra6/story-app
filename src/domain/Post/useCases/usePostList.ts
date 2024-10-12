@@ -1,4 +1,4 @@
-import {useEffect, useState} from 'react';
+import {useState} from 'react';
 
 import {Post} from '@domain/Post/entities';
 import {postService} from '@domain/Post/postService';

@@ -1,5 +1,4 @@
 import React from 'react';
-import {HomeHeader} from '@components/HomeHeader';
 import {Animated, StyleSheet} from 'react-native';
 import diffClamp = Animated.diffClamp;
 
