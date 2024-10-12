@@ -7,7 +7,7 @@
 
 import {ThemeProvider} from '@shopify/restyle';
 import React from 'react';
-import {theme} from './src/theme/theme';
+import {theme} from '@theme/theme';
 import {SafeAreaProvider} from 'react-native-safe-area-context';
 import {Routes} from './src/routes';
 

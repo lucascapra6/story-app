@@ -36,7 +36,6 @@ export function Screen({
       <Container backgroundColor={colors.background} {...boxProps}>
         <Box
           paddingHorizontal="s24"
-          paddingBottom="s24"
           style={[{paddingTop: top, paddingBottom: bottom}, style]}>
           {canGoBack && (
             <PressableBox

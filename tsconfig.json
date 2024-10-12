@@ -8,7 +8,10 @@
       "@routes/*": ["routes/*"],
       "@screens/*": ["screens/*"],
       "@assets/*": ["assets/*"],
-      "@theme/*": ["theme/*"]
+      "@theme/*": ["theme/*"],
+      "@domain/*": ["domain/*"],
+      "@api/*": ["api/*"],
+      "@types/*": ["types/*"]
     }
   }
 }

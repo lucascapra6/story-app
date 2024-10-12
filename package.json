@@ -16,6 +16,7 @@
     "@react-navigation/native": "^6.1.18",
     "@react-navigation/native-stack": "^6.11.0",
     "@shopify/restyle": "^2.4.4",
+    "axios": "^1.7.7",
     "eslint-plugin-import": "^2.30.0",
     "husky": "^9.1.6",
     "react": "18.2.0",
