@@ -8,6 +8,7 @@ import {useAppSafeArea} from '../../hooks/useAppSafeArea';
 import {ScrollViewContainer, ViewContainer} from '../ScreenContainer';
 import {useAppTheme} from '../../hooks/useAppTheme';
 import {useNavigation} from '@react-navigation/native';
+import {ScreenHeader} from '@components/Screen/components/ScreenHeader';
 
 export interface ScreenProps extends BoxProps {
   children: React.ReactNode;
@@ -22,11 +23,11 @@ export function Screen({
   scrollable = false,
   style,
   canGoBack = false,
+  title,
   ...boxProps
 }: ScreenProps) {
   const {bottom, top} = useAppSafeArea();
   const {colors} = useAppTheme();
-  const navigation = useNavigation();
 
   const Container = scrollable ? ScrollViewContainer : ViewContainer;
   return (
@@ -37,20 +38,7 @@ export function Screen({
         <Box
           paddingHorizontal="s24"
           style={[{paddingTop: top, paddingBottom: bottom}, style]}>
-          {canGoBack && (
-            <PressableBox
-              onPress={navigation.goBack}
-              mb="s24"
-              flexDirection="row"
-              hitSlop={10}
-              width={100}
-              alignItems="center">
-              <Icon name="arrowLeft" color="primary" />
-              <Text preset="paragraphMedium" semiBold ml="s8" bold>
-                Voltar
-              </Text>
-            </PressableBox>
-          )}
+          <ScreenHeader canGoBack={canGoBack} title={title} />
           {children}
         </Box>
       </Container>

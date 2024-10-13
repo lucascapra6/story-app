@@ -15,8 +15,9 @@ import {usePostList} from '@domain/Post/useCases/usePostList';
 import {ActivityIndicator} from '@components/ActivityIndicator';
 import {StickyHeaderWrapper} from '@components/StickyHeaderWrapper';
 import {useStickyHeaderWrapper} from '@components/StickyHeaderWrapper/useStickyHeaderWrapper';
+import {AppTabScreenProps} from '@routes/navigationProps';
 const headerHeight = Platform.OS === 'android' ? 70 : 110;
-export function HomeScreen() {
+export function HomeScreen({}: AppTabScreenProps<'HomeScreen'>) {
   const {data, error, loading, hasNextPage, fetchInitialData, fetchNextPage} =
     usePostList();
 
