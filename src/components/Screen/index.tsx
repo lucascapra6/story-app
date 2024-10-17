@@ -1,13 +1,10 @@
 import React from 'react';
 import {KeyboardAvoidingView, Platform, StyleSheet} from 'react-native';
-import {Icon} from '../Icon';
-import {Text} from '../Text';
-import {Box, BoxProps, PressableBox} from '../Box';
-import {useAppSafeArea} from '../../hooks/useAppSafeArea';
+import {Box, BoxProps} from '../Box';
+import {useAppSafeArea} from '@hooks/useAppSafeArea';
 
 import {ScrollViewContainer, ViewContainer} from '../ScreenContainer';
-import {useAppTheme} from '../../hooks/useAppTheme';
-import {useNavigation} from '@react-navigation/native';
+import {useAppTheme} from '@hooks/useAppTheme';
 import {ScreenHeader} from '@components/Screen/components/ScreenHeader';
 
 export interface ScreenProps extends BoxProps {
@@ -28,7 +25,6 @@ export function Screen({
 }: ScreenProps) {
   const {bottom, top} = useAppSafeArea();
   const {colors} = useAppTheme();
-
   const Container = scrollable ? ScrollViewContainer : ViewContainer;
   return (
     <KeyboardAvoidingView
