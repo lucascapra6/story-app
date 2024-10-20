@@ -3,7 +3,6 @@ import {Box} from '@components/Box';
 import {PostComment} from '@domain/PostComment/entities';
 import {Text} from '@components/Text';
 import {ProfileAvatar} from '@components/ProfileAvatar';
-import {dateUtils} from '../../../../utils/dateUtils';
 interface Props {
   postComment: PostComment;
 }

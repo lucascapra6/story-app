@@ -30,10 +30,11 @@ export function Screen({
     <KeyboardAvoidingView
       style={styles.container}
       behavior={Platform.OS === 'ios' ? 'padding' : undefined}>
-      <Container backgroundColor={colors.background} {...boxProps}>
+      <Container backgroundColor={colors.background}>
         <Box
           paddingHorizontal="s24"
-          style={[{paddingTop: top, paddingBottom: bottom}, style]}>
+          style={[{paddingTop: top, paddingBottom: bottom}, style]}
+          {...boxProps}>
           <ScreenHeader canGoBack={canGoBack} title={title} />
           {children}
         </Box>

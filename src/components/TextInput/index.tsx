@@ -8,6 +8,7 @@ import {
 import {useAppTheme} from '@hooks/useAppTheme';
 import {Box, BoxProps} from '@components/Box';
 import {$fontSizes, Text} from '@components/Text';
+import {useTextInputStyles} from '@components/TextInput/useTextInputStyles';
 
 export interface TextInputProps extends RNTextInputProps {
   label: string;
@@ -22,22 +23,11 @@ export function TextInput({
   boxProps,
   ...rnTextInputProps
 }: TextInputProps) {
-  const {colors, spacing} = useAppTheme();
+  const {colors} = useAppTheme();
   const inputRef = useRef<RNTextInput>(null);
 
-  const $boxContainer: BoxProps = {
-    flexDirection: 'row',
-    borderColor: errorMessage ? 'error' : 'gray4',
-    borderWidth: errorMessage ? 2 : 1,
-    borderRadius: 's16',
-    paddingHorizontal: 's4',
-  };
-  const $textInputStyle: TextStyle = {
-    flexGrow: 1,
-    flexShrink: 1,
-    padding: spacing.s16,
-    ...$fontSizes.paragraphMedium,
-  };
+  const {$textInputStyle, $boxContainer} = useTextInputStyles(errorMessage);
+
   function focusInput() {
     inputRef.current?.focus();
   }
