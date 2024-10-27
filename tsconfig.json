@@ -11,7 +11,8 @@
       "@theme/*": ["theme/*"],
       "@domain/*": ["domain/*"],
       "@api/*": ["api/*"],
-      "@types/*": ["types/*"]
+      "@types/*": ["types/*"],
+      "@infra/*": ["infra/*"]
     }
   }
 }

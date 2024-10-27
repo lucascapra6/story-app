@@ -13,13 +13,25 @@ import {PostCommentItem} from '@screens/app/PostComment/components/PostComentIte
 import {PostCommentBottom} from '@screens/app/PostComment/components/PostCommentBottom';
 import {Box} from '@components/Box';
 import {PostCommentTextMessage} from '@screens/app/PostComment/components/PostCommentTextMessage';
+import {useUser} from '@domain/Auth/hooks/useUser';
 
 export function PostCommentScreen({route}: AppRoutes<'PostComment'>) {
   const postId = route.params.postId;
+  const postAuthorId = route.params.postAuthorId;
+
   const {data, fetchInitialData, fetchNextPage, hasNextPage, refresh, loading} =
     usePostCommentList(postId);
+
+  const {id} = useUser();
   function renderItem({item}: ListRenderItemInfo<PostComment>) {
-    return <PostCommentItem postComment={item} />;
+    return (
+      <PostCommentItem
+        postComment={item}
+        userId={id}
+        postAuthorId={postAuthorId}
+        onRemoveComment={refresh}
+      />
+    );
   }
 
   useEffect(() => {

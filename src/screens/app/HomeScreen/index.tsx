@@ -40,7 +40,7 @@ export function HomeScreen({}: AppTabScreenProps<'HomeScreen'>) {
       <Animated.FlatList
         bounces={false}
         data={data}
-        keyExtractor={item => item.id}
+        keyExtractor={item => item.id.toString()}
         scrollEventThrottle={16}
         onEndReached={fetchNextPage}
         onScroll={handleScroll}

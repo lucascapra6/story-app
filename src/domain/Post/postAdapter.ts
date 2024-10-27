@@ -2,9 +2,10 @@ import {Post, PostApi} from '@domain/Post/entities';
 
 export function toPost(postApi: PostApi): Post {
   return {
-    id: String(postApi.id),
+    id: postApi.id,
     text: postApi.text,
     author: {
+      id: postApi.user.id,
       profileURL: postApi.user.profile_url,
       name: postApi.user.first_name,
       userName: postApi.user.username,
