@@ -12,7 +12,8 @@
       "@domain/*": ["domain/*"],
       "@api/*": ["api/*"],
       "@types/*": ["types/*"],
-      "@infra/*": ["infra/*"]
+      "@infra/*": ["infra/*"],
+      "@appservices/*": ["appservices/*"]
     }
   }
 }

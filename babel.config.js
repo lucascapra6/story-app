@@ -16,6 +16,7 @@ module.exports = {
           '@api': './src/api',
           '@types': './src/types',
           '@infra': './src/infra',
+          '@appservices': './src/appservices',
         },
       },
     ],
