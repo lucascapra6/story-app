@@ -31,6 +31,7 @@ import {TrashIcon} from '../../assets/icons/TrashIcon';
 import {CheckRoundIcon} from '../../assets/icons/CheckRound';
 import {Pressable} from 'react-native';
 import {MessageRoundIcon} from '../../assets/icons/MessageRound';
+import {ErrorRoundIcon} from '@assets/icons/ErrorRoundIcon';
 
 const IconsRegistry = {
   arrowLeft: ArrowLeftIcon,
@@ -61,6 +62,7 @@ const IconsRegistry = {
   settings: SettingsIcon,
   trash: TrashIcon,
   checkRound: CheckRoundIcon,
+  errorRound: ErrorRoundIcon,
   messageRound: MessageRoundIcon,
 };
 export type IconName = keyof typeof IconsRegistry;

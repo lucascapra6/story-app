@@ -18,11 +18,11 @@ import {useStickyHeaderWrapper} from '@components/StickyHeaderWrapper/useStickyH
 import {AppTabScreenProps} from '@routes/navigationProps';
 const headerHeight = Platform.OS === 'android' ? 70 : 110;
 export function HomeScreen({}: AppTabScreenProps<'HomeScreen'>) {
-  const {data, error, loading, hasNextPage, fetchInitialData, fetchNextPage} =
+  const {list, isError, isLoading, hasNextPage, refresh, fetchNextPage} =
     usePostList();
 
   useEffect(() => {
-    fetchInitialData();
+    refresh();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -39,7 +39,7 @@ export function HomeScreen({}: AppTabScreenProps<'HomeScreen'>) {
       </StickyHeaderWrapper>
       <Animated.FlatList
         bounces={false}
-        data={data}
+        data={list}
         keyExtractor={item => item.id.toString()}
         scrollEventThrottle={16}
         onEndReached={fetchNextPage}
@@ -47,7 +47,7 @@ export function HomeScreen({}: AppTabScreenProps<'HomeScreen'>) {
         onEndReachedThreshold={0.3}
         initialNumToRender={5}
         refreshControl={
-          <RefreshControl refreshing={loading} onRefresh={fetchInitialData} />
+          <RefreshControl refreshing={isLoading} onRefresh={refresh} />
         }
         renderItem={renderItem}
         contentContainerStyle={{flexGrow: 1, paddingTop: headerHeight}}
@@ -59,9 +59,9 @@ export function HomeScreen({}: AppTabScreenProps<'HomeScreen'>) {
         }
         ListEmptyComponent={
           <EmptyComponent
-            loading={loading}
-            error={error}
-            refetch={fetchInitialData}
+            loading={isLoading}
+            error={isError}
+            refetch={refresh}
           />
         }
       />

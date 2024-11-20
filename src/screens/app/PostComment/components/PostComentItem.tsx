@@ -6,25 +6,33 @@ import {ProfileAvatar} from '@components/ProfileAvatar';
 import {usePostCommentRemove} from '@domain/PostComment/useCases/usePostCommentRemove';
 import {Alert, Pressable} from 'react-native';
 import {postCommentService} from '@domain/PostComment/postCommentService';
-import {useToast} from '@appservices/Toast/useToast';
+import {useToast, useToastService} from '@appservices/Toast/useToast';
 import {ToastModel} from '@appservices/Toast/model';
 interface Props {
   postComment: PostComment;
   userId: number;
   postAuthorId: number;
   onRemoveComment: () => void;
+  postId: number;
 }
 export function PostCommentItem({
   postComment,
   userId,
   postAuthorId,
   onRemoveComment,
+  postId,
 }: Props) {
-  const {showToast} = useToast();
-  const {mutate} = usePostCommentRemove({
+  const {showToast} = useToastService();
+  const {mutate} = usePostCommentRemove(postId, {
     onSuccess: () => {
       onRemoveComment();
-      showToast(new ToastModel({message: 'Comentário deletado'}));
+      showToast(
+        new ToastModel({
+          message: 'Comentário deletado',
+          type: 'success',
+          position: 'bottom',
+        }),
+      );
     },
   });
 

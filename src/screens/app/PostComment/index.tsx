@@ -19,7 +19,7 @@ export function PostCommentScreen({route}: AppRoutes<'PostComment'>) {
   const postId = route.params.postId;
   const postAuthorId = route.params.postAuthorId;
 
-  const {data, fetchInitialData, fetchNextPage, hasNextPage, refresh, loading} =
+  const {list, isError, fetchNextPage, hasNextPage, refresh, isLoading} =
     usePostCommentList(postId);
 
   const {id} = useUser();
@@ -35,7 +35,7 @@ export function PostCommentScreen({route}: AppRoutes<'PostComment'>) {
   }
 
   useEffect(() => {
-    fetchInitialData();
+    refresh();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -43,7 +43,7 @@ export function PostCommentScreen({route}: AppRoutes<'PostComment'>) {
     <Screen flex={1} canGoBack title="Comentarios">
       <Box flex={1}>
         <FlatList
-          data={data}
+          data={list}
           renderItem={renderItem}
           keyExtractor={item => item.id.toString()}
           showsVerticalScrollIndicator={false}
@@ -51,7 +51,7 @@ export function PostCommentScreen({route}: AppRoutes<'PostComment'>) {
             paddingBottom: Platform.select({android: 40}),
           }}
           refreshControl={
-            <RefreshControl refreshing={loading} onRefresh={refresh} />
+            <RefreshControl refreshing={isLoading} onRefresh={refresh} />
           }
           ListFooterComponent={
             <PostCommentBottom
@@ -60,7 +60,7 @@ export function PostCommentScreen({route}: AppRoutes<'PostComment'>) {
             />
           }
         />
-        <PostCommentTextMessage postId={postId} onAddComment={refresh} />
+        <PostCommentTextMessage postId={postId} />
       </Box>
     </Screen>
   );

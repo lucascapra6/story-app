@@ -1,61 +1,45 @@
-import {useState} from 'react';
+import {useEffect, useState} from 'react';
 // @ts-ignore
 import {Page} from '@types/Pages';
+import {useInfiniteQuery} from '@tanstack/react-query';
 
+interface UsePaginatedListResult<TData> {
+  list: TData[];
+  isError: boolean | null;
+  isLoading: boolean;
+  refresh: () => void;
+  fetchNextPage: () => void;
+  hasNextPage: boolean;
+}
 export function usePaginatedList<Data>(
+  queryKey: readonly unknown[],
   getListService: (page: number) => Promise<Page<Data>>,
-) {
+): UsePaginatedListResult<Data> {
   const [listData, setListData] = useState<Data[]>([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<boolean | null>(null);
-  const [page, setPage] = useState(1);
-  const [hasNextPage, setHasNextPage] = useState(true);
-  async function fetchInitialData() {
-    try {
-      setError(null);
-      setLoading(true);
-      const {data, meta} = await getListService(1);
-      setListData(data);
-      if (meta.hasNextPage) {
-        setPage(2);
-        setHasNextPage(true);
-      } else {
-        setHasNextPage(false);
-      }
-    } catch (er) {
-      console.log(er);
-      setError(true);
-    } finally {
-      setLoading(false);
-    }
-  }
 
-  async function fetchNextPage() {
-    if (loading || !hasNextPage) {
-      return;
+  const query = useInfiniteQuery({
+    queryKey: queryKey,
+    queryFn: ({pageParam = 1}) => getListService(pageParam),
+    getNextPageParam: ({meta}) =>
+      meta.hasNextPage ? meta.currentPage + 1 : undefined,
+  });
+
+  useEffect(() => {
+    if (query.data) {
+      const pages = query.data.pages;
+      const newPage = pages.reduce<Data[]>((prev, curr) => {
+        return [...prev, ...curr.data];
+      }, []);
+      setListData(newPage);
     }
-    try {
-      setLoading(true);
-      const {data, meta} = await getListService(page);
-      setListData(prev => [...prev, ...data]);
-      if (meta.hasNextPage) {
-        setPage(prev => prev + 1);
-      } else {
-        setHasNextPage(false);
-      }
-    } catch (er) {
-      setError(true);
-    } finally {
-      setLoading(false);
-    }
-  }
+  }, [query.data]);
+
   return {
-    data: listData,
-    error,
-    loading,
-    fetchInitialData,
-    fetchNextPage,
-    hasNextPage,
-    refresh: fetchInitialData,
+    list: listData,
+    isError: query.isError,
+    isLoading: query.isInitialLoading,
+    fetchNextPage: query.fetchNextPage,
+    hasNextPage: !!query.hasNextPage,
+    refresh: query.refetch,
   };
 }

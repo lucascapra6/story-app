@@ -1,8 +1,9 @@
-import {Toast} from '@appservices/Toast/entities';
+import {Toast, ToastPosition, ToastType} from '@appservices/Toast/types';
+import {position} from '@shopify/restyle';
 
 export class ToastModel implements Toast {
   message: string;
-  type: 'success' | 'error' | undefined;
+  type: ToastType;
   duration: number | undefined;
   action:
     | {
@@ -10,10 +11,18 @@ export class ToastModel implements Toast {
         onPress: () => void;
       }
     | undefined;
-  constructor({message, type = 'success', duration = 2000, action}: Toast) {
+  position: ToastPosition;
+  constructor({
+    message,
+    type = 'success',
+    duration = 2000,
+    action,
+    position,
+  }: Toast) {
     this.message = message;
     this.type = type;
     this.duration = duration;
     this.action = action;
+    this.position = position;
   }
 }
