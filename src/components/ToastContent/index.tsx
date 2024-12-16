@@ -1,4 +1,5 @@
-import {Toast, ToastPosition, ToastType} from '@appservices/Toast/types';
+import React from 'react';
+import {Toast, ToastType} from '@appservices/Toast/types';
 import {Dimensions} from 'react-native';
 import {$shadowProps} from '@theme/theme';
 import {Box, BoxProps} from '@components/Box';

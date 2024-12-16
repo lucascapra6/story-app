@@ -10,6 +10,7 @@ export function ProfileScreen({route}: AppRoutes<'ProfileScreen'>) {
   const userId = route.params.userId;
 
   const {isLoading, isError, user} = useUserGetById(userId);
+  console.log(user);
 
   return (
     <Screen canGoBack>

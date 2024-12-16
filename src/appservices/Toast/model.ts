@@ -1,5 +1,4 @@
 import {Toast, ToastPosition, ToastType} from '@appservices/Toast/types';
-import {position} from '@shopify/restyle';
 
 export class ToastModel implements Toast {
   message: string;

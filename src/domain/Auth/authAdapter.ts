@@ -7,6 +7,8 @@ function toAuthCredentials(
   return {
     token: authCredentialsAPI.auth.token,
     user: userAdapter.toUser(authCredentialsAPI.user),
+    refreshToken: authCredentialsAPI.auth.refreshToken,
+    tokenExpiresAt: authCredentialsAPI.auth.expires_at,
   };
 }
 export const authAdapter = {toAuthCredentials};

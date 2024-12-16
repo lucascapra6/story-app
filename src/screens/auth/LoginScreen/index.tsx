@@ -4,25 +4,39 @@ import {Text} from '@components/Text';
 import {Button} from '@components/Button';
 import {PressableBox} from '@components/Box';
 import {useForm} from 'react-hook-form';
-import {Alert} from 'react-native';
 import {FormTextInput} from '@components/Form/FormTextInput';
 import {FormPasswordInput} from '@components/Form/FormPasswordInput';
 import {zodResolver} from '@hookform/resolvers/zod';
 import {loginSchema, LoginSchema} from '@screens/auth/LoginScreen/loginSchema';
 import {AuthRoutes} from '@routes/navigationProps';
+import {useAuthSignIn} from '@domain/Auth/useCases/useSignIn';
+import {useToastService} from '@appservices/Toast/useToast';
+import {ToastModel} from '@appservices/Toast/model';
 
 type LoginFormType = {
   email: string;
   password: string;
 };
 export const LoginScreen = ({navigation}: AuthRoutes<'LoginScreen'>) => {
+  const {signIn, isLoading} = useAuthSignIn({onError: onSignInError});
+  const {showToast} = useToastService();
+  function onSignInError(errorMessage: string) {
+    console.log(errorMessage);
+    showToast(
+      new ToastModel({
+        message: errorMessage,
+        position: 'bottom',
+        type: 'error',
+      }),
+    );
+  }
   function submitForm({email, password}: LoginSchema) {
-    Alert.alert(`Email: ${email} \n Senha: ${password}`);
+    signIn({email, password});
   }
   const {
     control,
     handleSubmit,
-    formState: {errors, isValid},
+    formState: {isValid},
   } = useForm<LoginFormType>({
     resolver: zodResolver(loginSchema),
     defaultValues: {
@@ -38,7 +52,6 @@ export const LoginScreen = ({navigation}: AuthRoutes<'LoginScreen'>) => {
     navigation.navigate('ForgotPasswordScreen');
   }
 
-  console.log(errors);
   return (
     <Screen flex={1} justifyContent="center" scrollable>
       <Text marginBottom="s8" preset="headingLarge">
@@ -84,6 +97,7 @@ export const LoginScreen = ({navigation}: AuthRoutes<'LoginScreen'>) => {
         marginTop="s48"
         title="Entrar"
         disabled={!isValid}
+        loading={isLoading}
         onPress={handleSubmit(submitForm)}
       />
       <Button

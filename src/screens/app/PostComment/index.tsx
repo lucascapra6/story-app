@@ -19,7 +19,7 @@ export function PostCommentScreen({route}: AppRoutes<'PostComment'>) {
   const postId = route.params.postId;
   const postAuthorId = route.params.postAuthorId;
 
-  const {list, isError, fetchNextPage, hasNextPage, refresh, isLoading} =
+  const {list, fetchNextPage, hasNextPage, refresh, isLoading} =
     usePostCommentList(postId);
 
   const {id} = useUser();
@@ -30,6 +30,7 @@ export function PostCommentScreen({route}: AppRoutes<'PostComment'>) {
         userId={id}
         postAuthorId={postAuthorId}
         onRemoveComment={refresh}
+        postId={postId}
       />
     );
   }

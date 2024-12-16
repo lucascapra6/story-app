@@ -6,7 +6,7 @@ import {ProfileAvatar} from '@components/ProfileAvatar';
 import {usePostCommentRemove} from '@domain/PostComment/useCases/usePostCommentRemove';
 import {Alert, Pressable} from 'react-native';
 import {postCommentService} from '@domain/PostComment/postCommentService';
-import {useToast, useToastService} from '@appservices/Toast/useToast';
+import {useToastService} from '@appservices/Toast/useToast';
 import {ToastModel} from '@appservices/Toast/model';
 interface Props {
   postComment: PostComment;

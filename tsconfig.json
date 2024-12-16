@@ -15,5 +15,5 @@
       "@infra/*": ["infra/*"],
       "@appservices/*": ["appservices/*"]
     }
-  }
+  },
 }
