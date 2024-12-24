@@ -2,13 +2,14 @@ import {Screen} from '@components/Screen';
 import {Text} from '@components/Text';
 import React from 'react';
 
-import { Box } from "@components/Box";
-import { Icon } from "@components/Icon";
-import { useNavigation } from "@react-navigation/native";
-import { AppTabScreenProps } from "@routes/navigationProps";
-import { useAuthCredentials } from "@appservices/AuthCredentials/useAuthCredetentials";
+import {Box} from '@components/Box';
+import {Icon} from '@components/Icon';
+import {AppTabScreenProps} from '@routes/navigationProps';
+import {useAuthCredentials} from '@appservices/AuthCredentials/useAuthCredetentials';
 
-export function MyProfileScreen({navigation}: AppTabScreenProps<'MyProfileScreen'>) {
+export function MyProfileScreen({
+  navigation,
+}: AppTabScreenProps<'MyProfileScreen'>) {
   const {authCredentials} = useAuthCredentials();
   const name = authCredentials?.user.fullName;
   return (

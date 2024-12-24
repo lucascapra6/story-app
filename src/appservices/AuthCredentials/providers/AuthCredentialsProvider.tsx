@@ -1,10 +1,10 @@
+import React from 'react';
 import {AuthCredentialsService} from '@appservices/AuthCredentials/IAuthCredentialsServices';
 import {createContext, PropsWithChildren, useEffect, useState} from 'react';
 import {AuthCredentials} from '@domain/Auth/entities';
 import {authService} from '@domain/Auth/authService';
 import {authCredentialsStorage} from '@appservices/AuthCredentials/authCredentialsStorage';
-import {api, registerInterceptor} from '@api/apiConfig';
-import {authApi} from '@domain/Auth/authApi';
+import {registerInterceptor} from '@api/apiConfig';
 
 export const AuthCredentialsContext = createContext<AuthCredentialsService>({
   authCredentials: null,

@@ -7,7 +7,7 @@ import {Text} from '@components/Text';
 import {ActivityIndicator} from '@components/ActivityIndicator';
 import {buttonPresets, Presets} from '@components/Button/buttonPresets';
 
-type ButtonProps = {
+export type ButtonProps = {
   preset?: Presets;
   title: string;
   loading?: boolean;

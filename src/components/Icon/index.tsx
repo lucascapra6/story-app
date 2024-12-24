@@ -89,7 +89,7 @@ export function Icon({
   const SvgIcon = IconsRegistry[name];
   if (onPress) {
     return (
-      <Pressable onPress={onPress} hitSlop={10}>
+      <Pressable testID={name} onPress={onPress} hitSlop={10}>
         <SvgIcon color={colors[color]} size={size} />
       </Pressable>
     );

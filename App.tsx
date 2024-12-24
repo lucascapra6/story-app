@@ -13,7 +13,7 @@ import {Routes} from './src/routes';
 import {Toast} from '@components/Toast';
 import {ToastProvider} from '@appservices/Toast/useToastContext';
 import {QueryClient, QueryClientProvider} from '@tanstack/react-query';
-import { AuthCredentialsProvider } from "@appservices/AuthCredentials/providers/AuthCredentialsProvider";
+import {AuthCredentialsProvider} from '@appservices/AuthCredentials/providers/AuthCredentialsProvider';
 const queryClient = new QueryClient();
 function App(): JSX.Element {
   return (

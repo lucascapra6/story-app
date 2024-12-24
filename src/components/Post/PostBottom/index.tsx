@@ -3,8 +3,11 @@ import {Post} from '@domain/Post/entities';
 import {Box} from '@components/Box';
 import {Text} from '@components/Text';
 import {useNavigation} from '@react-navigation/native';
-type Props = Pick<Post, 'author' | 'text' | 'commentCount' | 'id'>;
-export function PostBottom({author, text, commentCount, id}: Props) {
+export type PostBottomProps = Pick<
+  Post,
+  'author' | 'text' | 'commentCount' | 'id'
+>;
+export function PostBottom({author, text, commentCount, id}: PostBottomProps) {
   const navigation = useNavigation();
   const commentText = getCommentText(commentCount);
   function navigateToPostComment() {
