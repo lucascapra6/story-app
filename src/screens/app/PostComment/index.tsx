@@ -40,7 +40,7 @@ export function PostCommentScreen({route}: AppRoutes<'PostComment'>) {
   }, []);
 
   return (
-    <Screen flex={1} canGoBack title="Comentarioss">
+    <Screen flex={1} canGoBack title="Comentarios">
       <Box flex={1}>
         <FlatList
           testID="post-comment-list"
