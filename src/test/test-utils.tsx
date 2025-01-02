@@ -12,7 +12,6 @@ import {theme} from '@theme/theme';
 import {NavigationContainer} from '@react-navigation/native';
 import {QueryClient, QueryClientProvider} from '@tanstack/react-query';
 import {AuthCredentialsProvider} from '@appservices/AuthCredentials/providers/AuthCredentialsProvider';
-import {Routes} from '@routes/index';
 import {Toast} from '@components/Toast';
 import {ToastProvider} from '@appservices/Toast/useToastContext';
 const queryClientConfig = {

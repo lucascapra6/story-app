@@ -1,3 +1,4 @@
+import React from 'react';
 import {PasswordInput} from '@components/PasswordInput';
 import {fireEvent, screen} from '@testing-library/react-native';
 import {render} from '../../../test/test-utils';

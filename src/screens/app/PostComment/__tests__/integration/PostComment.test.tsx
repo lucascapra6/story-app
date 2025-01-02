@@ -138,6 +138,7 @@ describe('integration: PostCommentScreen', () => {
     confirmButtonMocked && confirmButtonMocked();
 
     await waitForElementToBeRemoved(() =>
+      // eslint-disable-next-line testing-library/prefer-query-by-disappearance
       screen.getByText(mockedPostComment.mateusPostCommentAPI.message, {
         exact: false,
       }),
@@ -146,6 +147,7 @@ describe('integration: PostCommentScreen', () => {
     expect(comments.length).toBe(1);
 
     await waitFor(() => {
+      // eslint-disable-next-line testing-library/await-async-queries
       expect(screen.findByTestId('toast-message')).toBeTruthy();
     });
 

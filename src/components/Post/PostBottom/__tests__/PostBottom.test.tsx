@@ -1,3 +1,4 @@
+import React from 'react';
 import {render} from '../../../../test/test-utils';
 import {PostBottom} from '@components/Post/PostBottom';
 import {fireEvent, screen} from '@testing-library/react-native';
