@@ -104,7 +104,7 @@ describe('integration: PostCommentScreen', () => {
     expect(comments.length).toBe(3);
   });
 
-  test('Should delete the comment when the user is its owner', async () => {
+  test('Should delete the comment when the user is its owner, showing then unshowing alert', async () => {
     jest
       .spyOn(authCredentialsStorage, 'get')
       .mockResolvedValue(mockedPostComment.mateusAuthCredentials);
