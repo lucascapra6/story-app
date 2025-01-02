@@ -10,7 +10,7 @@ import {useToastService} from '@appservices/Toast/useToast';
 import {ToastModel} from '@appservices/Toast/model';
 interface Props {
   postComment: PostComment;
-  userId: number;
+  userId: number | null;
   postAuthorId: number;
   onRemoveComment: () => void;
   postId: number;
@@ -56,7 +56,10 @@ export function PostCommentItem({
   }
 
   return (
-    <Pressable disabled={!isAllowToDelete} onLongPress={confirmRemove}>
+    <Pressable
+      disabled={!isAllowToDelete}
+      onLongPress={confirmRemove}
+      testID="post-comment-id">
       <Box flexDirection="row" alignItems="center" mb="s16">
         <ProfileAvatar imageURL={postComment.author.profileURL} />
         <Box ml="s12" flex={1}>

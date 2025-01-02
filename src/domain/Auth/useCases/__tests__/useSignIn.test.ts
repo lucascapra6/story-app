@@ -1,5 +1,5 @@
 import {renderHook} from '../../../../test/test-utils';
-import {AllTheProviders, waitFor, act} from '../../../../test/test-utils';
+import {waitFor, act} from '../../../../test/test-utils';
 
 import {useAuthSignIn} from '@domain/Auth/useCases/useSignIn';
 import {authService} from '@domain/Auth/authService';

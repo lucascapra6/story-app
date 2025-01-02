@@ -8,6 +8,7 @@ import {registerInterceptor} from '@api/apiConfig';
 
 export const AuthCredentialsContext = createContext<AuthCredentialsService>({
   authCredentials: null,
+  userId: null,
   isLoading: false,
   saveCredentials: async () => {},
   removeCredentials: async () => {},
@@ -17,6 +18,7 @@ export function AuthCredentialsProvider({children}: PropsWithChildren) {
   const [authCredentials, setAuthCredentials] =
     useState<AuthCredentials | null>(null);
   const [isLoading, setLoading] = useState(false);
+  const userId = authCredentials?.user.id || null;
   async function removeCredentials() {
     authService.removeToken();
     authCredentialsStorage.remove();
@@ -59,7 +61,13 @@ export function AuthCredentialsProvider({children}: PropsWithChildren) {
 
   return (
     <AuthCredentialsContext.Provider
-      value={{authCredentials, isLoading, removeCredentials, saveCredentials}}>
+      value={{
+        authCredentials,
+        userId,
+        isLoading,
+        removeCredentials,
+        saveCredentials,
+      }}>
       {children}
     </AuthCredentialsContext.Provider>
   );

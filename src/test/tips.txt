@@ -1,0 +1,10 @@
+- fake timers do jest ignora funcoes de temporarizacao (setTimeout, setInterval etc). importante utilizar para passar
+por cima dessas funcoes e tambem para testar componentes com animações.
+
+- Use findByTestId: Quando você espera que o elemento apareça no DOM em algum momento durante o teste.
+
+- Use queryByTestId: Quando você precisa verificar se um elemento não está presente no DOM, seja antes de ser exibido
+ou após ser removido.
+
+- É possivel acessar e invocar funcoes nativas, como Alert por exemplo, utilizando spyOn e direcionando a referencia
+do metodo para uma funcao mock.

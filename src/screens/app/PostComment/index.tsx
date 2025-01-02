@@ -13,7 +13,7 @@ import {PostCommentItem} from '@screens/app/PostComment/components/PostComentIte
 import {PostCommentBottom} from '@screens/app/PostComment/components/PostCommentBottom';
 import {Box} from '@components/Box';
 import {PostCommentTextMessage} from '@screens/app/PostComment/components/PostCommentTextMessage';
-import {useUser} from '@domain/Auth/hooks/useUser';
+import {useAuthCredentials} from '@appservices/AuthCredentials/useAuthCredetentials';
 
 export function PostCommentScreen({route}: AppRoutes<'PostComment'>) {
   const postId = route.params.postId;
@@ -21,13 +21,12 @@ export function PostCommentScreen({route}: AppRoutes<'PostComment'>) {
 
   const {list, fetchNextPage, hasNextPage, refresh, isLoading} =
     usePostCommentList(postId);
-
-  const {id} = useUser();
+  const {userId} = useAuthCredentials();
   function renderItem({item}: ListRenderItemInfo<PostComment>) {
     return (
       <PostCommentItem
         postComment={item}
-        userId={id}
+        userId={userId}
         postAuthorId={postAuthorId}
         onRemoveComment={refresh}
         postId={postId}
@@ -44,6 +43,7 @@ export function PostCommentScreen({route}: AppRoutes<'PostComment'>) {
     <Screen flex={1} canGoBack title="Comentarios">
       <Box flex={1}>
         <FlatList
+          testID="post-comment-list"
           data={list}
           renderItem={renderItem}
           keyExtractor={item => item.id.toString()}

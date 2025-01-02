@@ -15,7 +15,6 @@ async function getList(
     page,
     per_page: PER_PAGE,
   });
-
   return {
     data: postCommentPageAPI.data.map(postCommentAdapter.toPostComment),
     meta: apiAdapter.toMetaDataPage(postCommentPageAPI.meta),
@@ -39,7 +38,7 @@ async function remove(postCommentId: number): Promise<string> {
  */
 function isAllowToDelete(
   postComment: PostComment,
-  userId: number,
+  userId: number | null,
   postAuthorId: number,
 ): boolean {
   if (postComment.author.id === userId) {
