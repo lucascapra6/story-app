@@ -15,10 +15,15 @@ async function getList(
     page,
     per_page: PER_PAGE,
   });
-  return {
-    data: postCommentPageAPI.data.map(postCommentAdapter.toPostComment),
-    meta: apiAdapter.toMetaDataPage(postCommentPageAPI.meta),
-  };
+
+  return apiAdapter.toPageModel(
+    postCommentPageAPI,
+    postCommentAdapter.toPostComment,
+  );
+  // return {
+  //   meta: apiAdapter.toMetaDataPage(postCommentPageAPI.meta),
+  //   data: postCommentPageAPI.data.map(postCommentAdapter.toPostComment),
+  // };
 }
 async function create(postId: number, message: string): Promise<PostComment> {
   const postCommentAPI = await postCommentApi.create(postId, message);

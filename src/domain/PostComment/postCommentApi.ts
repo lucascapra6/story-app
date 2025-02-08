@@ -6,8 +6,8 @@ export const POST_COMMENT_PATH = 'user/post_comment';
 async function getList(
   post_id: number,
   pageParams?: PageParams,
-): Promise<PageApi<PostCommentAPI[]>> {
-  const response = await api.get<PageApi<PostCommentAPI[]>>(POST_COMMENT_PATH, {
+): Promise<PageApi<PostCommentAPI>> {
+  const response = await api.get<PageApi<PostCommentAPI>>(POST_COMMENT_PATH, {
     params: {
       post_id,
       ...pageParams,

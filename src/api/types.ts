@@ -24,7 +24,7 @@ export interface PageApi<Data> {
    * @description Array of data items for the current page
    * The type of each item is determined by the generic type `Data`.
    */
-  data: Data;
+  data: Data[];
 }
 
 export interface PageParams {
