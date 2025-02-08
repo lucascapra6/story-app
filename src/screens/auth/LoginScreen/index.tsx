@@ -12,7 +12,8 @@ import {AuthRoutes} from '@routes/navigationProps';
 import {useAuthSignIn} from '@domain/Auth/useCases/useSignIn';
 import {useToastService} from '@appservices/Toast/useToast';
 import {ToastModel} from '@appservices/Toast/model';
-
+import {NativeModules} from 'react-native';
+const {SalesforceMessaging} = NativeModules;
 type LoginFormType = {
   email: string;
   password: string;
@@ -20,6 +21,15 @@ type LoginFormType = {
 export const LoginScreen = ({navigation}: AuthRoutes<'LoginScreen'>) => {
   const {signIn, isLoading} = useAuthSignIn({onError: onSignInError});
   const {showToast} = useToastService();
+
+  const initializeSalesforceMessaging = async () => {
+    try {
+      console.log(NativeModules);
+      const result = await SalesforceMessaging.initializeSalesforceMessaging();
+    } catch (error) {
+      console.error('Erro ao inicializar o Salesforce Messaging:', error);
+    }
+  };
   function onSignInError(errorMessage: string) {
     console.log(errorMessage);
     showToast(
@@ -51,6 +61,8 @@ export const LoginScreen = ({navigation}: AuthRoutes<'LoginScreen'>) => {
   function navigateToForgotPasswordScreen() {
     navigation.navigate('ForgotPasswordScreen');
   }
+
+  function openChat() {}
 
   return (
     <Screen flex={1} justifyContent="center" scrollable>
@@ -105,6 +117,13 @@ export const LoginScreen = ({navigation}: AuthRoutes<'LoginScreen'>) => {
         marginTop="s12"
         title="Criar uma conta"
         onPress={navigateToSignUpScreen}
+      />
+
+      <Button
+        preset="outline"
+        marginTop="s12"
+        title="Iniciar chat"
+        onPress={initializeSalesforceMessaging}
       />
     </Screen>
   );
